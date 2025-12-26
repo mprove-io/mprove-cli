@@ -10,7 +10,7 @@ jobs:
     name: homebrew-releaser
     steps:
       - name: Add published release to Homebrew
-        uses: Justintime50/homebrew-releaser@v3
+        uses: Justintime50/homebrew-releaser@v2
         with:
           version: ${{ github.event.release.tag_name }}
           homebrew_owner: mprove-io
