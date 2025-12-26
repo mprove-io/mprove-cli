@@ -1,0 +1,30 @@
+name: Release Homebrew
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  homebrew-releaser:
+    runs-on: ubuntu-latest
+    name: homebrew-releaser
+    steps:
+      - name: Add published release to Homebrew
+        uses: Justintime50/homebrew-releaser@v3
+        with:
+          version: ${{ github.event.release.tag_name }}
+          homebrew_owner: mprove-io
+          homebrew_tap: homebrew-mprove
+          debug: true
+          formula_folder: Formula
+          github_token: ${{ secrets.HOMEBREW_MPROVE_GITHUB_TOKEN }}
+          commit_owner: mprove-bot
+          commit_email: support@mprove.io
+          install: |
+            bin.install "mprove"
+          test: |
+            assert_match "mproveCLI", shell_output("#{bin}/mprove version")
+          target_darwin_amd64: true
+          target_darwin_arm64: true
+          # target_linux_amd64: true
+          # target_linux_arm64: true
