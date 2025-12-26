@@ -24,6 +24,7 @@ jobs:
             bin.install "mprove"
           # test: |
           #   assert_match "mproveCLI", shell_output("#{bin}/mprove version")
+          skip_checksum: true
           target_darwin_amd64: true
           target_darwin_arm64: true
           # target_linux_amd64: true
