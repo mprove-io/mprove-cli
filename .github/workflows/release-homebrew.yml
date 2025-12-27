@@ -22,9 +22,9 @@ jobs:
           commit_email: support@mprove.io
           install: |
             bin.install "mprove"
-          # test: |
-          #   assert_match "mproveCLI", shell_output("#{bin}/mprove version")
+          test: |
+            assert_match "mproveCLI", shell_output("#{bin}/mprove version")
           target_darwin_amd64: true
           target_darwin_arm64: true
-          # target_linux_amd64: true
-          # target_linux_arm64: true
+          target_linux_amd64: true
+          target_linux_arm64: true
