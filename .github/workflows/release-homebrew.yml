@@ -8,6 +8,7 @@ jobs:
   homebrew-releaser:
     runs-on: ubuntu-latest
     name: homebrew-releaser
+    if: ${{ !github.event.release.prerelease && !github.event.release.draft }}
     steps:
       - name: Add published release to Homebrew
         uses: Justintime50/homebrew-releaser@v3
